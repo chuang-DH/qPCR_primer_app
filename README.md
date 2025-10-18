@@ -42,7 +42,7 @@ def reverse_complement(seq):
     comp = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
     return ''.join(comp.get(base, base) for base in reversed(seq))
 
-def is_self_complementary(seq, min_match=4):
+def is_self_complementary(seq, min_match=1):
     seq = sanitize_seq(seq)
     length = len(seq)
     if length < min_match + 1:
