@@ -47,7 +47,7 @@ You can view GC%, Tm, and other details directly in the interface.
 🌐 Online Demo
 
 Try it on Streamlit:
-👉 https://your-streamlit-app-url.streamlit.app
+👉 https://qpcrprimerapp-smypfaljr4wtha97gtyub5.streamlit.app/
 
 🧑‍💻 Author
 
