@@ -28,11 +28,13 @@ Easy to use for both beginners and researchers
 
 🧩 Technologies Used
 
-Python 3.x
+The core algorithm for primer design integrates multi-parameter optimization to identify reliable primer candidates suitable for qPCR applications. It operates in two main stages: primer candidate generation and primer pair evaluation.
 
-Tkinter (for GUI)
+In the first stage, the function find_primer_candidates() scans the input DNA sequence across all possible windows within the specified primer length range (min_len to max_len). For each subsequence, it computes the GC content and melting temperature (Tm) using established thermodynamic rules. Candidates are filtered based on user-defined constraints for GC percentage (gc_min, gc_max) and temperature tolerance (tm_target, tm_tol). Each surviving primer undergoes additional quality checks, including self-complementarity, 3′-end GC richness, and potential hairpin formation, which are flagged as warnings. The resulting list of candidates is annotated with their positions, lengths, GC%, Tm, and any detected structural issues.
 
-Biopython / primer3-py (for sequence and primer analysis)
+In the second stage, design_qpcr_primers() orchestrates the design of primer pairs. Both forward and reverse primer candidates are generated independently and pruned based on a composite score function that prioritizes thermodynamic stability and uniformity. This scoring penalizes deviations from the ideal GC content (50%) and target Tm, while incorporating additional penalties for structural warnings such as self-dimers and hairpins. The algorithm then iteratively pairs each forward primer with downstream reverse primers, calculating the corresponding amplicon length and reverse-complement sequence. Only pairs producing amplicons within the acceptable range (amp_min–amp_max) are retained. Each pair is further ranked by an aggregate performance score that considers GC balance, Tm deviation, structural warnings, and amplicon size uniformity.
+
+By combining heuristic filtering with parametric scoring, this implementation efficiently searches the sequence space for the most stable and specific primer pairs. The final ranked list of primer pairs (top_n) represents optimal candidates for qPCR assays, balancing accuracy, thermodynamic compatibility, and structural robustness.
 
 🧠 How It Works
 
