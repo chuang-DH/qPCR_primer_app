@@ -1,7 +1,7 @@
-🧬 qPCR Primer Designer GUI
+🧬 qPCR/PCR Primer Designer GUI
 Overview
 
-This project is a qPCR Primer Design Tool built with Python and Tkinter.
+This project is a qPCR/PCR Primer Design Tool built with Python and Tkinter.
 It allows users to input a DNA sequence (up to 15,000 bp) and automatically generates several primer pairs suitable for qPCR experiments.
 
 The program ensures that selected primers meet common qPCR conditions, including:
